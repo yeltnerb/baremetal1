@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "bmterra-1",
+  "private_key_id": "4d778a02583536ec540955c7d8a12aad86cd2eda",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC/CLNh3Yo9zrkm\nlzLroTkLbhYI9qSQblCOICwQ2RZFpd6W2fHbVgeNA8yrxZ4Z2OqK1OSTzbnIjc4h\nqxWGlr4ECNzTQapbLLWv6fhF34QKAuHyJ/qZMUqV+T+J+972kp37nXaESRKjr5X6\n+jJYJNjqIfsbNfL0HGVHIAPtObeHyixaIkhb00zPispZ/jMtd6dvNics6TixA8Pg\nkJG8eJ1DI9Z8kZHTbEZ4wivd7UxHLOC98AqgDdqsZG4MvZkDbrf6382IWEkZ2ql7\n5xuH5J9al8DkQtTWrzycP5KVaj6yKqRcYNc/W6lkuJ6nopcjAPyb40giHFPDiF5o\n1ffbcWwPAgMBAAECggEAMWW8EOHa9dmHKfHuAl0Jpal9PCse6ZQE84NhMagY6MCX\n2rUXo6pOwImLep1aoP9kwqqDQq7vS+tTMoSNR+Sh1OQ/ycbQmMvqXUcoYlUGTRpq\nt5Xb6JIE4dv2MKV3BZZrEJ2qgFFu5vGn3CKnMwCwMHbB+krMfI/9JlOigEys5wkP\nIf+I0GPAnA3bJTH8C0U7R3lTTsf83+eolwhqYH4zOkIGZ15NPm64fYo+kbsfPT4+\nDRAiq5z0eH05m9ia3Mq6NcUDG3tMIljUEacaGm+tuMJqc5jL/FlyXDKjdiCd1p7G\nrpGQaP6S9MX5ZBCIH3+6bs/QULuof+xvXsXoahaHNQKBgQDtKuW4tohloWle/3tv\nUjDSZeWczUmVL1Ra3eaaG1ceCTjs+ZBCzRCE8Y4uiBt1vfhakTKJJx/BwEeljxxi\nOcp36IcQR2IrbSe1x9Q13nE9iahwPqv9lg+Qq6+CsnX698muip8T+lluns0cBfid\n/9cR3aWuhfVd/Mdtoq+0FYbxYwKBgQDONAH1dMcKI6Wx+ZvrzS2kPV6bm7hEa9Nm\ntCvSrj30O7Qztz9TgBYGsjzRTuAbP9GYfJMXUuH+8qC8W/gza6YAqanqSTIfy3yC\niMyO2kUtSOKESanKXz7OdJ9ikyN1FaJzBfQFn5YyeXe7jTvYT45YWMR3vaS1oD+g\nJ+A6ksoQZQKBgBcQFdi5f1gKszl2tKUlo/PBzutJlz83pAdWDserovQbx3pb5mho\nkpOq/b2OpMT1XUJJXlWyBUeNECqMWSFAJ20zona1ylkYu0TVEtDOOcrXKRcJMSZu\nwkK6P04BVrG6CNW9SyzhKnM0ZBO2jO+oYlytZiArjKnAHBCQQm/LrByrAoGAMbTL\nvBWYXVNWf96BvYfKNsssYSpacvPjE+Dep3ylJpi1ybmkpEY+CQMyMepnj2oE5lMx\nSfAK1mA6au1omUybyZEcioN2d7+flf/P/6eSAWaOZAE10ri+9RmbyjFZ3MGIVV3c\nAvcDR8uMF0PmZzBWSemsAolOiRHGBJ9YKAZ2exkCgYBeNHS5cNewm1rxEisZIVi4\nWGr65it8NKL6Xz9xoBI1G+hw9UNnB3gCD0sZyyJV4o3lAoUuq1UZEBVC95okrPw/\nAZeE9lBgTQ1nAtfGdB2eUt1DB4eGoHn3asSP/I8dFUioIT/QfhrrHMGtVFaTs+YB\n/eO1GMTDMPWGJLEJCjNx5Q==\n-----END PRIVATE KEY-----\n",
+  "client_email": "bmterra-service1@bmterra-1.iam.gserviceaccount.com",
+  "client_id": "117700113805001340446",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/bmterra-service1%40bmterra-1.iam.gserviceaccount.com"
+}

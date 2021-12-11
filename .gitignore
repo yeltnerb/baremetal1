@@ -28,3 +28,4 @@ override.tf.json
 # Include tfplan files to ignore the plan output of command: terraform plan -out=tfplan
 # example: *tfplan*
 bmterra-1-4d778a025835.json
+baremetalteeraform-workspace.code-workspace

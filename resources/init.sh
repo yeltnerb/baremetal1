@@ -41,7 +41,7 @@ function __main__ () {
 
   __install_deps__
   __setup_vxlan__
-  __disable_apparmour__
+ # __disable_apparmour__    app_armor supported after 1.8.1
   __setup_admin_host__
 
   echo "[+] Successfully completed initialization of host $HOSTNAME"
@@ -177,7 +177,7 @@ function __setup_kubctl__ () {
 ##############################################################################
 function __setup_bmctl__ () {
   mkdir baremetal && cd baremetal || return
-  gsutil cp gs://anthos-baremetal-release/bmctl/1.8.0/linux-amd64/bmctl .
+  gsutil cp gs://anthos-baremetal-release/bmctl/1.10.0/linux-amd64/bmctl .
   chmod a+x bmctl
   mv bmctl /usr/local/sbin/
   __check_exit_status__ $? \

@@ -73,7 +73,7 @@ module "enable_google_apis_secondary" {
 
 module "create_service_accounts" {
   source  = "terraform-google-modules/service-accounts/google"
-  version = ">= 4.0"
+  version = "~> 3.0"
   # fetched from previous module to explicitely express dependency
   project_id = module.enable_google_apis_secondary.project_id
   depends_on = [
@@ -92,20 +92,11 @@ module "create_service_accounts" {
    
   ]
 }
-resource "google_project_iam_binding" "project" {
-  project = ${var.project_id}
-  role    = "roles/compute.instance.admin"
-
-  members = [
-    "user:${var.anthos_service_account_name}",
-  ]
-}
-
 
 module "vpc" {
     source  = "terraform-google-modules/network/google"
     version = ">= 4.0"
-    project_id   = "bmterra-1"
+    project_id   = var.project_id
     network_name = var.network
     routing_mode = "GLOBAL"
 
@@ -119,7 +110,55 @@ module "vpc" {
     ]
 }
 
+module "network_firewall_rules" {
+  source  = "terraform-google-modules/network/google//modules/firewall-rules"
+  version = 4.0
+  depends_on = [
+    module.vpc
+  ]
+  project_id   = var.project_id
+  network_name = var.network
 
+  rules = [{
+    name                    = "allow-ssh-ingress"
+    description             = "Fixup and allow SSH from everywhere"
+    direction               = "INGRESS"
+    priority                = null
+    ranges                  = ["0.0.0.0/0"]
+    source_tags             = null
+    source_service_accounts = null
+    target_tags             = null
+    target_service_accounts = null
+    allow = [{
+      protocol = "tcp"
+      ports    = ["22"]
+    }]
+    deny = []
+    log_config = {
+      metadata = "INCLUDE_ALL_METADATA"
+    }
+  },
+  {
+    name                    = "internal-comm"
+    description             = "Allow all network traffic internally"
+    direction               = "INGRESS"
+    priority                = null
+    ranges                  = ["10.0.0.0/9"]
+    source_tags             = null
+    source_service_accounts = null
+    target_tags             = null
+    target_service_accounts = null
+    allow = [{
+      protocol = "all"
+      ports = null
+    }]
+    deny = []
+    log_config = {
+      metadata = "INCLUDE_ALL_METADATA"
+    }
+  }
+  ]
+}
 
 
 module "instance_template" {

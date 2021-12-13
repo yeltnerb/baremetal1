@@ -73,7 +73,7 @@ module "enable_google_apis_secondary" {
 
 module "create_service_accounts" {
   source  = "terraform-google-modules/service-accounts/google"
-  version = "~> 3.0"
+  version = ">= 3.0"
   # fetched from previous module to explicitely express dependency
   project_id = module.enable_google_apis_secondary.project_id
   depends_on = [
@@ -88,8 +88,8 @@ module "create_service_accounts" {
     "${var.project_id}=>roles/logging.logWriter",
     "${var.project_id}=>roles/monitoring.metricWriter",
     "${var.project_id}=>roles/monitoring.dashboardEditor",
-    "${var.project_id}=>roles/stackdriver.resourceMetadata.writer",
-   
+    "${var.project_id}=>roles/stackdriver.resourceMetadata.writer", 
+    "${var.project_id}=>roles/iam.serviceAccountKeyAdmin" 
   ]
 }
 

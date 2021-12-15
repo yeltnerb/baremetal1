@@ -31,6 +31,7 @@ DEFAULT_IFACE=$(ip link | awk -F: '$0 !~ "lo|vir|wl|^[^0-9]"{print $2;getline}' 
 DATE=$(date)
 HOSTNAME=$(hostname)
 
+
 ##############################################################################
 # Entrypoint to the startup_script. Runs all the necessary steps to configure
 # the host; also ensures admin specific setup is done for admin hosts
@@ -51,8 +52,10 @@ function __main__ () {
 # Install some basic dependencies required for the setup
 ##############################################################################
 function __install_deps__ () {
-  apt-get -qq update
-  apt-get -qq install -y jq
+ 
+  sudo apt-get -qq update
+  sudo apt -qq autoremove 
+  sudo apt-get -qq upgrade -y jq
 
   __check_exit_status__ $? \
     "[+] Successfully installed dependencies" \

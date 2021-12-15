@@ -89,7 +89,9 @@ module "create_service_accounts" {
     "${var.project_id}=>roles/monitoring.metricWriter",
     "${var.project_id}=>roles/monitoring.dashboardEditor",
     "${var.project_id}=>roles/stackdriver.resourceMetadata.writer", 
-    "${var.project_id}=>roles/iam.serviceAccountKeyAdmin" 
+    "${var.project_id}=>roles/iam.serviceAccountKeyAdmin",
+    "${var.project_id}=>roles/monitoring.editor" 
+
   ]
 }
 
@@ -172,7 +174,7 @@ module "instance_template" {
   # fetched from previous module to explicitely express dependency
   project_id           = module.enable_google_apis_secondary.project_id
   region               = var.region           # --zone=${ZONE}
-  source_image         = var.image            # --image=ubuntu-2004-focal-v20210429
+  source_image         = var.image            # --image=ubuntu-2004
   source_image_family  = var.image_family     # --image-family=ubuntu-2004-lts
   source_image_project = var.image_project    # --image-project=ubuntu-os-cloud
   machine_type         = var.machine_type     # --machine-type $MACHINE_TYPE
@@ -288,3 +290,4 @@ module "init_hosts" {
   init_vars_file         = format(local.init_script_vars_file_path_template, each.value)
   cluster_yaml_path      = local.cluster_yaml_file
 }
+

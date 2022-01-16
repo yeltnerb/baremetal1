@@ -31,6 +31,7 @@ DEFAULT_IFACE=$(ip link | awk -F: '$0 !~ "lo|vir|wl|^[^0-9]"{print $2;getline}' 
 DATE=$(date)
 HOSTNAME=$(hostname)
 
+
 ##############################################################################
 # Entrypoint to the startup_script. Runs all the necessary steps to configure
 # the host; also ensures admin specific setup is done for admin hosts
@@ -41,7 +42,7 @@ function __main__ () {
 
   __install_deps__
   __setup_vxlan__
-  __disable_apparmour__
+ # __disable_apparmour__    app_armor supported after 1.8.1
   __setup_admin_host__
 
   echo "[+] Successfully completed initialization of host $HOSTNAME"
@@ -51,8 +52,10 @@ function __main__ () {
 # Install some basic dependencies required for the setup
 ##############################################################################
 function __install_deps__ () {
-  apt-get -qq update
-  apt-get -qq install -y jq
+ 
+  sudo apt-get -qq update
+  sudo apt -qq autoremove 
+  sudo apt-get -qq upgrade -y jq
 
   __check_exit_status__ $? \
     "[+] Successfully installed dependencies" \
@@ -177,7 +180,7 @@ function __setup_kubctl__ () {
 ##############################################################################
 function __setup_bmctl__ () {
   mkdir baremetal && cd baremetal || return
-  gsutil cp gs://anthos-baremetal-release/bmctl/1.8.0/linux-amd64/bmctl .
+  gsutil cp gs://anthos-baremetal-release/bmctl/1.10.0/linux-amd64/bmctl .
   chmod a+x bmctl
   mv bmctl /usr/local/sbin/
   __check_exit_status__ $? \

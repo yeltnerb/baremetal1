@@ -68,7 +68,7 @@ variable "image" {
     Use 'gcloud compute images list' to find a list of all available images
   EOF
   type        = string
-  default     = "ubuntu-2004-focal-v20210429"
+  default     = "ubuntu-2004-focal-v20211212"
 }
 
 variable "image_project" {
@@ -161,6 +161,14 @@ variable "secondary_apis" {
     "logging.googleapis.com",
     "iam.googleapis.com",
     "compute.googleapis.com",
+    "cloudresourcemanager.googleapis.com",
+    "cloudtrace.googleapis.com",
+    "meshca.googleapis.com",
+    "meshtelemetry.googleapis.com",
+    "meshconfig.googleapis.com",
+    "iamcredentials.googleapis.com",
+    "opsconfigmonitoring.googleapis.com",
+    "anthosaudit.googleapis.com" 
   ]
 }
 
@@ -173,6 +181,7 @@ variable "abm_cluster_id" {
 # [START anthos_bm_node_prefix]
 ###################################################################################
 # The recommended instance count for High Availability (HA) is 3 for Control plane
+# control plane node count must always be odd
 # and 2 for Worker nodes.
 ###################################################################################
 variable "instance_count" {

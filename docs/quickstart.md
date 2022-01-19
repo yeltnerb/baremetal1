@@ -1,4 +1,12 @@
-## Quick starter
+## Quick start guide
+
+Pre-requiresites 
+If using GCP cloud shell terraform should already be installed.
+if using another system please make sure that terraform and Google Cloud SDK are installed
+
+Terraform requires a service account with editor permissions on a project to operate correctly. 
+If you are an internal Google User please see go/terrabm  which will have some internal google specific instructions
+
 
 ### Setup the bare metal infrastructure
 
@@ -6,10 +14,14 @@
 
 2. Update the `terraform.tfvars.sample` file to include variables specific to your environment
 ```
+These are REQUIRED   
 project_id       = "<GOOGLE_CLOUD_PROJECT_ID>"
 region           = "<GOOGLE_CLOUD_REGION_TO_USE>"
 zone             = "<GOOGLE_CLOUD_ZONE_TO_USE>"
 credentials_file = "<PATH_TO_GOOGLE_CLOUD_SERVICE_ACCOUNT_FILE>"
+
+The rest of the items in the variables file are optional but can be changed if deisred.
+
 ```
 
 3. Rename the `variables` file to default name used by Terraform for the `variables` file:
@@ -18,19 +30,23 @@ credentials_file = "<PATH_TO_GOOGLE_CLOUD_SERVICE_ACCOUNT_FILE>"
 mv terraform.tfvars.sample terraform.tfvars
 ```
 
-4. Navigate to the root directory of this repository initialize it as a Terraform directory
+4.  Login and authroize the gcloud SDK
+gcloud auth login
+gcloud auth application-default login 
+
+5. Navigate to the root directory of this repository initialize it as a Terraform directory
 ```sh
 # this sets up the required Terraform state management configurations, similar to 'git init'
 terraform init
 ```
 
-5. Create a _Terraform_ execution plan
+6. Create a _Terraform_ execution plan
 ```sh
 # compares the state of the resources, verifies the scripts and creates an execution plan
 terraform plan
 ```
 
-6. Apply the changes described in the _Terraform_ script
+7. Apply the changes described in the _Terraform_ script
 ```sh
 # executes the plan on the given provider (i.e: GCP) to reach the desired state of resources
 terraform apply

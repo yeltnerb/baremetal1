@@ -25,10 +25,9 @@ if [[ $OSTYPE == "linux-gnu" && $CLOUD_SHELL == true ]]; then
 # now loop and fix policies with  constraints in Argolis 
 # Inner Loop - Loop Through Policies with Constraints
 declare -a policies=("constraints/compute.trustedImageProjects"
-                 "constraints/compute.vmExternalIpAccess"
+ "constraints/compute.vmExternalIpAccess"
  "constraints/compute.restrictSharedVpcSubnetworks"
  "constraints/compute.restrictSharedVpcHostProjects" 
- "constraints/compute.VmExtermalIpAccess"
  "constraints/compute.restrictVpcPeering"
  "constraints/compute.vmCanIpForward")
 

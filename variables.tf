@@ -110,13 +110,13 @@ variable "gpu" {
 variable "network" {
   description = "VPC network to which the provisioned Compute Engine VMs is to be connected to"
   type        = string
-  default     = "default"
+  default     = "bare-metal-1"
 }
 
 variable "subnetwork" {
   description = "VPC network to which the provisioned Compute Engine VMs is to be connected to"
   type        = string
-  default     = "default"
+  default     = "bare-metal-sub-1"
 }
 
 
@@ -175,7 +175,7 @@ variable "secondary_apis" {
 variable "abm_cluster_id" {
   description = "Unique id to represent the Anthos Cluster to be created"
   type        = string
-  default     = "cluster1"
+  default     = "abm-on-gce"
 }
 
 # [START anthos_bm_node_prefix]

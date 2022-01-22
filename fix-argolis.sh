@@ -28,7 +28,6 @@ declare -a policies=("constraints/compute.trustedImageProjects"
                  "constraints/compute.vmExternalIpAccess"
  "constraints/compute.restrictSharedVpcSubnetworks"
  "constraints/compute.restrictSharedVpcHostProjects" 
- "constraints/compute.VmExtermalIpAccess"
  "constraints/compute.restrictVpcPeering"
  "constraints/compute.vmCanIpForward")
 

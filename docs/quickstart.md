@@ -5,6 +5,7 @@ If using GCP cloud shell terraform should already be installed.
 if using another system please make sure that terraform and Google Cloud SDK are installed
 
 Terraform requires a service account with editor permissions on a project to operate correctly. 
+
 If you are an internal Google User please see go/terrabm  which will have some internal google specific instructions
 
 
@@ -17,7 +18,7 @@ If you are an internal Google User please see go/terrabm  which will have some i
 These are REQUIRED   
 project_id       = "<GOOGLE_CLOUD_PROJECT_ID>"
 region           = "<GOOGLE_CLOUD_REGION_TO_USE>"
-zone             = "<GOOGLE_CLOUD_ZONE_TO_USE>"
+zone             = "<GOOGLE_CLOUD_ZONE_TO_USE>"  #must be in the region specified above
 credentials_file = "<PATH_TO_GOOGLE_CLOUD_SERVICE_ACCOUNT_FILE>"
 
 The rest of the items in the variables file are optional but can be changed if deisred.
@@ -40,7 +41,7 @@ gcloud auth application-default login
 terraform init
 ```
 
-6. Create a _Terraform_ execution plan
+6. Create a _Terraform_ execution plan  (optional)
 ```sh
 # compares the state of the resources, verifies the scripts and creates an execution plan
 terraform plan

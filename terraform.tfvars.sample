@@ -7,7 +7,7 @@ anthos_service_account_name   = "baremetal-gcr"
 resources_path                = "./resources"
 machine_type                  = "n1-standard-8"
 network                       = "baremetal-1"
-subnetwork                    = "baremetal-sub1"
+subnetwork                    = "barenet-01"
 instance_count                = {
                                   "controlplane" : 3
                                   "worker" : 2

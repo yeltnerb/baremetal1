@@ -9,12 +9,10 @@ if [[ $OSTYPE == "linux-gnu" && $CLOUD_SHELL == true ]]; then
     echo "⚡️ Creating New Terraform Service Account."
     export PROJECT_ID=$(gcloud config get-value project)
     export BASE_DIR=${BASE_DIR:="${PWD}"}
-    export WORK_DIR=${WORK_DIR:="${BASE_DIR}/workdir"}
     export ZONE=us-central1-a
     export TFSERVICE_ACCT="${PROJECT_ID}-tf-service"
     export PROJECT_NUMBER=$(gcloud projects list --filter="$PROJECT_ID" --format="value(PROJECT_NUMBER)")
     export COMPENGSERVICE_ACCT="${PROJECT_NUMBER}-compute@developer.gserviceaccount.com"
-    echo "WORK_DIR set to $WORK_DIR"
     echo "PROJECT_ID set to $PROJECT_ID"
     gcloud config set project $PROJECT_ID
 
@@ -23,6 +21,8 @@ gcloud services enable compute
 
 #create a new terraform service account 
 gcloud iam service-accounts create $TFSERVICE_ACCT --description="Auto-created Terraform Service Account" --display-name="Terraform Service Account"
+#download the service account key file for terraform
+gcloud iam service-accounts keys create $TFSERVICE_ACCT.json --iam-account="$TFSERVICE_ACCT@$PROJECT_ID.iam.gserviceaccount.com"
 
 # add proper permissions to TF service account
 gcloud projects add-iam-policy-binding $PROJECT_ID    --member="serviceAccount:$TFSERVICE_ACCT@$PROJECT_ID.iam.gserviceaccount.com"     --role="roles/editor"

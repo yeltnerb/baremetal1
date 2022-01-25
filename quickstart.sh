@@ -31,7 +31,7 @@ gcloud projects add-iam-policy-binding $PROJECT_ID    --member="serviceAccount:$
 
 #add permissions to the default created compute engine account
 #assume default compute service account was created and uses the standard <project number>-compute@devleoper.gserviceaccount.com
-gcloud projects add-iam-policy-binding $PROJECT_ID    --member="serviceAccount:$COMPENGSERVICE_ACCT"     --role="roles/iam.serviceAccountAdmin"
+gcloud projects add-iam-policy-binding $PROJECT_ID    --member="serviceAccount:$COMPENGSERVICE_ACCT"     --role="roles/iam.serviceAccountKeyAdmin"
 gcloud projects add-iam-policy-binding $PROJECT_ID    --member="serviceAccount:$COMPENGSERVICE_ACCT"     --role="roles/compute.instanceAdmin"
 gcloud projects add-iam-policy-binding $PROJECT_ID    --member="serviceAccount:$COMPENGSERVICE_ACCT"     --role="roles/compute.viewer"
 gcloud projects add-iam-policy-binding $PROJECT_ID    --member="serviceAccount:$COMPENGSERVICE_ACCT"     --role="roles/iam.serviceAccountUser"

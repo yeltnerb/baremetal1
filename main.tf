@@ -51,6 +51,7 @@ locals {
     { for vm in module.controlplane_vm_hosts.vm_info : vm.hostname => vm.externalIp },
     { for vm in module.worker_vm_hosts.vm_info : vm.hostname => vm.externalIp }
   )
+
 }
 
 module "enable_google_apis_primary" {
@@ -100,7 +101,7 @@ module "vpc" {
     version = ">= 4.0"
     project_id   = var.project_id
     network_name = var.network
-    routing_mode = "GLOBAL"
+    routing_mode = "REGIONAL"
 
     subnets = [
         {
@@ -181,7 +182,7 @@ module "instance_template" {
   disk_size_gb         = var.boot_disk_size   # --boot-disk-size 200G
   disk_type            = var.boot_disk_type   # --boot-disk-type pd-ssd
   #network              = var.network          # --network default
-  subnetwork           = var.subnetwork         # --network default
+  subnetwork           = module.vpc.subnets_names[0] 
   tags                 = var.tags             # --tags http-server,https-server
   min_cpu_platform     = var.min_cpu_platform # --min-cpu-platform "Intel Haswell"
   can_ip_forward       = true                 # --can-ip-forward
@@ -208,7 +209,7 @@ module "admin_vm_hosts" {
     module.enable_google_apis_secondary
   ]
   region            = var.region
-  network           = var.subnetwork
+  subnetwork           = module.vpc.subnets_names[0] 
   vm_names          = local.admin_vm_name
   instance_template = module.instance_template.self_link
 }
@@ -221,7 +222,7 @@ module "controlplane_vm_hosts" {
     module.enable_google_apis_secondary
   ]
   region            = var.region
-  network           = var.subnetwork
+  subnetwork           = module.vpc.subnets_names[0] 
   vm_names          = local.controlplane_vm_names
   instance_template = module.instance_template.self_link
 }
@@ -234,7 +235,7 @@ module "worker_vm_hosts" {
     module.enable_google_apis_secondary
   ]
   region            = var.region
-  network           = var.subnetwork
+  subnetwork           = module.vpc.subnets_names[0] 
   vm_names          = local.worker_vm_names
   instance_template = module.instance_template.self_link
 }

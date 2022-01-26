@@ -21,13 +21,14 @@ gcloud services enable compute
 
 #create a new terraform service account 
 gcloud iam service-accounts create $TFSERVICE_ACCT --description="Auto-created Terraform Service Account" --display-name="Terraform Service Account"
-#download the service account key file for terraform
-gcloud iam service-accounts keys create $TFSERVICE_ACCT.json --iam-account="$TFSERVICE_ACCT@$PROJECT_ID.iam.gserviceaccount.com"
 
 # add proper permissions to TF service account
 gcloud projects add-iam-policy-binding $PROJECT_ID    --member="serviceAccount:$TFSERVICE_ACCT@$PROJECT_ID.iam.gserviceaccount.com"     --role="roles/editor"
 gcloud projects add-iam-policy-binding $PROJECT_ID    --member="serviceAccount:$TFSERVICE_ACCT@$PROJECT_ID.iam.gserviceaccount.com"     --role="roles/iam.securityAdmin"
 gcloud projects add-iam-policy-binding $PROJECT_ID    --member="serviceAccount:$TFSERVICE_ACCT@$PROJECT_ID.iam.gserviceaccount.com"     --role="roles/iam.serviceAccountKeyAdmin"
+
+#download the service account key file for terraform
+gcloud iam service-accounts keys create $TFSERVICE_ACCT.json --iam-account="$TFSERVICE_ACCT@$PROJECT_ID.iam.gserviceaccount.com"
 
 #add permissions to the default created compute engine account
 #assume default compute service account was created and uses the standard <project number>-compute@devleoper.gserviceaccount.com

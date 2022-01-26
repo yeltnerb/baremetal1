@@ -20,6 +20,7 @@ module "external_ip_addresses" {
   ip_names = var.vm_names
 }
 
+
 module "compute_instance" {
   source            = "terraform-google-modules/vm/google//modules/compute_instance"
   version           = ">= 7.3.0"
@@ -28,7 +29,7 @@ module "compute_instance" {
   for_each          = toset(var.vm_names)
   hostname          = each.value
   #network           = var.network # --network defaultin tfvars
-  subnetwork        = var.subnetwork # --network defaultin tfvars
+  subnetwork        = var.subnetwork
   access_config = [{
     nat_ip       = module.external_ip_addresses.ips[each.value].address
     network_tier = module.external_ip_addresses.ips[each.value].tier

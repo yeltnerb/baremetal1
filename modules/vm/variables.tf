@@ -20,16 +20,14 @@ variable "region" {
   default     = "us-central1"
 }
 
-variable "network" {
-  description = "VPC network to which the provisioned VMs are to be connected to"
-  type        = string
-  default     = "default"
-}
+#variable "network" {
+#  description = "VPC network to which the provisioned VMs are to be connected to"
+#  type        = string
+#}
 
 variable "subnetwork" {
   description = "VPC network to which the provisioned Compute Engine VMs is to be connected to"
   type        = string
-  default     = "barenet-01"
 }
 
 variable "vm_names" {
